@@ -26,6 +26,10 @@
             </intent-filter>
 
         </activity>
+        <activity
+            android:name=".EditEmployeeActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 

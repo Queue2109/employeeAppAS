@@ -5,6 +5,12 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    // colors used in an app
+    <color name="light_blue">#a7cfcc</color>
+    <color name="dark_blue">#1A535C</color>
+    <color name="light_beige">#f7faf7</color>
+    <color name="sweet_red">#FF6B6B</color>
+    <color name="yellow">#FFE66D</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

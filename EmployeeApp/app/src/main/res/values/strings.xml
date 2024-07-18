@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">EmployeeApp</string>
+    <string name="list_of_employees">List of employees</string>
+    <string name="edit_employee">Edit your employee</string>
+    <string name="add_employee">Add new employee</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="age">Age</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="save">Save</string>
+    <string name="statistics">Statistics</string>
+    <string name="add_new_employee">Add new employee</string>
 </resources>
