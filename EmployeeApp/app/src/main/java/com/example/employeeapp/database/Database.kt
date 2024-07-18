@@ -139,6 +139,17 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         return employee
     }
 
+    fun deleteEmployeeById(id: Int) {
+        val db = this.writableDatabase
+        val success = db.delete(TABLE_EMPLOYEES, "$COLUMN_ID = ?", arrayOf(id.toString()))
+        if(success == -1) {
+            Log.e("DBError", "Failed to delete data")
+        } else {
+            Log.d("DBSuccess", "Data deleted successfully")
+        }
+        db.close()
+    }
+
     // Function for testing purposes
     fun deleteAllEmployees() {
         val db = this.writableDatabase

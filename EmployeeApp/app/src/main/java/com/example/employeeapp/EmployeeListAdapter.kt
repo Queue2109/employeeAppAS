@@ -1,3 +1,5 @@
+package com.example.employeeapp
+
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
@@ -5,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.employeeapp.Employee
-import com.example.employeeapp.EditEmployeeActivity
-import com.example.employeeapp.R
+import com.example.employeeapp.database.Database
+import com.google.android.material.snackbar.Snackbar
 
 class EmployeeListAdapter(private val employeeList: ArrayList<Employee>) : RecyclerView.Adapter<EmployeeListAdapter.MyViewHolder>() {
-
+    private lateinit var databaseHolder: Database
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.employee_view, parent, false)
+        databaseHolder = Database(parent.context)
         return MyViewHolder(itemView)
     }
 
@@ -27,6 +29,23 @@ class EmployeeListAdapter(private val employeeList: ArrayList<Employee>) : Recyc
             Log.d("Employee ID", currentItem.id.toString())
             intent.putExtra("EMPLOYEE_ID", currentItem.id)
             context.startActivity(intent)
+        }
+
+        holder.itemView.setOnLongClickListener {
+
+            employeeList.removeAt(holder.adapterPosition)
+            notifyItemRemoved(position)
+            databaseHolder.deleteEmployeeById(employeeList[position].id)
+
+            val snack = Snackbar.make(holder.itemView, "Employee deleted", Snackbar.LENGTH_LONG)
+            snack.setAction("Undo") {
+
+                employeeList.add(position, currentItem)
+                notifyItemInserted(position)
+                databaseHolder.addEmployee(currentItem)
+            }
+            snack.show()
+            true
         }
     }
 

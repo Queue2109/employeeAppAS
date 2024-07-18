@@ -1,10 +1,8 @@
 package com.example.employeeapp
 
-import EmployeeListAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,10 +21,16 @@ class MainActivity: AppCompatActivity() {
         databaseHelper = Database(this)
         getUserData()
         Log.d("Employees", databaseHelper.getAllEmployees().toString())
-//
+
         val addEmployeeButton = findViewById<FloatingActionButton>(R.id.addEmployeeButton)
         addEmployeeButton.setOnClickListener {
             val intent = Intent(this, EditEmployeeActivity::class.java)
+            startActivity(intent)
+        }
+
+        val statisticsButton = findViewById<FloatingActionButton>(R.id.statisticsButton)
+        statisticsButton.setOnClickListener {
+            val intent = Intent(this, StatisticsActivity::class.java)
             startActivity(intent)
         }
     }

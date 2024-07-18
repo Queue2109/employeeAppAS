@@ -11,4 +11,7 @@
     <string name="save">Save</string>
     <string name="statistics">Statistics</string>
     <string name="add_new_employee">Add new employee</string>
+    <string name="legend">Legend: \n Blue: Men \n Pink: Women</string>
+    <string name="averageAge">"Average age of employees: "</string>
+    <string name="back">Back</string>
 </resources>

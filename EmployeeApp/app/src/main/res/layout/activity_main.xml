@@ -30,6 +30,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addEmployeeButton"
+        android:background="@color/dark_blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -43,6 +44,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/statisticsButton"
+        android:background="@color/dark_blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -52,7 +54,7 @@
         android:contentDescription="@string/statistics"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/statistics" />
+        app:srcCompat="@drawable/stats" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
