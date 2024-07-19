@@ -36,6 +36,8 @@
             android:id="@+id/first_name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/input_box_style"
+            android:textColor="@color/dark_blue"
             android:hint="@string/first_name" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -53,9 +55,11 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:background="@drawable/input_box_style"
             android:id="@+id/last_name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/dark_blue"
             android:hint="@string/last_name" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,9 +76,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutLastName">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:background="@drawable/input_box_style"
             android:id="@+id/age_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/dark_blue"
             android:hint="@string/age"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -113,14 +119,25 @@
 
     <Button
         android:id="@+id/saveButton"
-        style="@style/CustomButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
+        android:background="@drawable/button_shape"
         android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toEndOf="@+id/button" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="@android:color/white"
+        android:background="@drawable/button_shape"
+        android:text="@string/cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

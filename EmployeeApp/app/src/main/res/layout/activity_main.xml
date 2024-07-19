@@ -13,6 +13,7 @@
         android:layout_marginTop="84dp"
         android:text="@string/list_of_employees"
         android:textSize="30sp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,12 +22,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/employeeRecyclerView"
         android:layout_width="409dp"
-        android:layout_height="450dp"
+        android:layout_height="400dp"
+        android:layout_margin="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.433" />
+        app:layout_constraintVertical_bias="0.27" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addEmployeeButton"
