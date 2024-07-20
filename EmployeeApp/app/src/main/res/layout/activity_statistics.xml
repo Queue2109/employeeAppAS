@@ -11,12 +11,10 @@
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:text="@string/statistics"
-        android:textColor="@color/dark_blue"
-        android:textSize="24sp"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold"
+        android:textColor="@color/text_primary"
+        android:textSize="30sp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="@+id/textView1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -39,7 +37,7 @@
 
     <TextView
         android:id="@+id/textView1"
-        android:textColor="@color/dark_blue"
+        android:textColor="@color/text_primary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/pieChart"
@@ -54,7 +52,7 @@
 
     <TextView
         android:id="@+id/avg_age_text_view"
-        android:textColor="@color/dark_blue"
+        android:textColor="@color/text_primary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
@@ -64,11 +62,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView1"
-        android:text="neki"
-        android:textSize="24sp" />
+        android:text=""
+        android:textSize="24sp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/back_button"
         android:background="@color/dark_blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

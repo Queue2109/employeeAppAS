@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -46,6 +47,11 @@ class EditEmployeeActivity: AppCompatActivity() {
         findViewById<Button>(R.id.saveButton).setOnClickListener {
             saveEmployee()
         }
+
+        findViewById<Button>(R.id.cancelButton).setOnClickListener{
+            finish()
+            overridePendingTransition(0, 0)
+        }
     }
 
     private fun loadEmployeeData(id: Int) {
@@ -55,10 +61,24 @@ class EditEmployeeActivity: AppCompatActivity() {
             firstNameEditText.setText(employee.firstName)
             lastNameEditText.setText(employee.lastName)
             ageEditText.setText(employee.age.toString())
+            if(employee.gender == "Male") {
+                radioGroupGender.check(R.id.radio_button_male)
+            } else {
+                radioGroupGender.check(R.id.radio_button_female)
+            }
         }
     }
 
     private fun saveEmployee() {
+        if(firstNameEditText.text.toString().isEmpty() || lastNameEditText.text.toString().isEmpty() || ageEditText.text.toString().isEmpty()) {
+            Utils.showAlert("Invalid data", "All fields are required", this)
+            return
+        }
+
+        if(ageEditText.text.toString().toInt() > 64 || ageEditText.text.toString().toInt() < 15) {
+            Utils.showAlert("Age restriction", "Employee's age must be between 15 and 64!", this)
+            return
+        }
         // Code to either update the existing employee or add a new one
         val selectedGenderId = radioGroupGender.checkedRadioButtonId
         val gender = if (selectedGenderId == R.id.radio_button_male) "M" else "F"

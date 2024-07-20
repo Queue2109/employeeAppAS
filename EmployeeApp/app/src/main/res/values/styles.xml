@@ -10,8 +10,13 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:radius">8dp</item>
         <item name="android:gravity">center</item>
+        <item name="android:background">@color/dark_blue</item>
         <item name="android:layout_margin">8dp</item>
 
     </style>
 
+    <style name="CancelButton" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/sweet_red</item>
+    </style>
 </resources>

@@ -32,10 +32,11 @@ class StatisticsActivity: AppCompatActivity() {
         avgAgeTextView = findViewById(R.id.avg_age_text_view)
         val age = calculateAvgAge()
         avgAgeTextView.text = age
+        backButton = findViewById<FloatingActionButton>(R.id.back_button)
 
         backButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            finish()
+            overridePendingTransition(0, 0)
         }
     }
 
@@ -78,6 +79,7 @@ class StatisticsActivity: AppCompatActivity() {
         legend.isWordWrapEnabled = true
         legend.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
         legend.textSize = 16f
+        legend.textColor = ContextCompat.getColor(this, R.color.text_primary)
         pieChart.invalidate() // refresh
     }
 

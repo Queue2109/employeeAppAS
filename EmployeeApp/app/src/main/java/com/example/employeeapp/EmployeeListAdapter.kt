@@ -1,7 +1,6 @@
 package com.example.employeeapp
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.employeeapp.database.Database
 import com.google.android.material.snackbar.Snackbar
-
 class EmployeeListAdapter(private val employeeList: ArrayList<Employee>) : RecyclerView.Adapter<EmployeeListAdapter.MyViewHolder>() {
     private lateinit var databaseHolder: Database
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -23,28 +21,29 @@ class EmployeeListAdapter(private val employeeList: ArrayList<Employee>) : Recyc
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = employeeList[position]
         holder.bindItems(currentItem)
+
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context, EditEmployeeActivity::class.java)
-            Log.d("Employee ID", currentItem.id.toString())
             intent.putExtra("EMPLOYEE_ID", currentItem.id)
             context.startActivity(intent)
         }
 
         holder.itemView.setOnLongClickListener {
+            val removedItem = employeeList[position]
 
-            employeeList.removeAt(holder.adapterPosition)
+            employeeList.removeAt(position)
             notifyItemRemoved(position)
-            databaseHolder.deleteEmployeeById(employeeList[position].id)
+            databaseHolder.deleteEmployeeById(removedItem.id)
 
-            val snack = Snackbar.make(holder.itemView, "Employee deleted", Snackbar.LENGTH_LONG)
-            snack.setAction("Undo") {
-
-                employeeList.add(position, currentItem)
-                notifyItemInserted(position)
-                databaseHolder.addEmployee(currentItem)
+            Snackbar.make(holder.itemView, "Employee deleted", Snackbar.LENGTH_LONG).apply {
+                setAction("Undo") {
+                    employeeList.add(position, removedItem)
+                    notifyItemInserted(position)
+                    databaseHolder.addEmployee(removedItem)
+                }
+                show()
             }
-            snack.show()
             true
         }
     }
@@ -58,3 +57,4 @@ class EmployeeListAdapter(private val employeeList: ArrayList<Employee>) : Recyc
         }
     }
 }
+

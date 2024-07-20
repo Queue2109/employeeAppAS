@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="item_background">#a7cfcc</color>
+    <color name="text_primary">@color/light_blue</color>
+    <color name="text_input_primary">@color/dark_blue</color>
+</resources>

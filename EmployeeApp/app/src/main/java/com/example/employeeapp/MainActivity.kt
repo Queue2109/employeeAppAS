@@ -2,7 +2,10 @@ package com.example.employeeapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,10 +32,16 @@ class MainActivity: AppCompatActivity() {
         }
 
         val statisticsButton = findViewById<FloatingActionButton>(R.id.statisticsButton)
+
         statisticsButton.setOnClickListener {
-            val intent = Intent(this, StatisticsActivity::class.java)
-            startActivity(intent)
+            if(employeeList.size > 0) {
+                val intent = Intent(this, StatisticsActivity::class.java)
+                startActivity(intent)
+            } else {
+                Utils.showAlert("No employees yet", "To see statistics, one or more employees must exist", this)
+            }
         }
+
     }
 
     private fun getUserData() {
