@@ -23,16 +23,16 @@ class MainActivity: AppCompatActivity() {
         employeeRecyclerView = findViewById(R.id.employeeRecyclerView)
         databaseHelper = Database(this)
         getUserData()
-        Log.d("Employees", databaseHelper.getAllEmployees().toString())
 
+        // Go to EditEmployeeActivity when button is clicked
         val addEmployeeButton = findViewById<FloatingActionButton>(R.id.addEmployeeButton)
         addEmployeeButton.setOnClickListener {
             val intent = Intent(this, EditEmployeeActivity::class.java)
             startActivity(intent)
         }
 
+        // Go to StatisticsActivity when button is clicked
         val statisticsButton = findViewById<FloatingActionButton>(R.id.statisticsButton)
-
         statisticsButton.setOnClickListener {
             if(employeeList.size > 0) {
                 val intent = Intent(this, StatisticsActivity::class.java)
@@ -41,7 +41,6 @@ class MainActivity: AppCompatActivity() {
                 Utils.showAlert("No employees yet", "To see statistics, one or more employees must exist", this)
             }
         }
-
     }
 
     private fun getUserData() {

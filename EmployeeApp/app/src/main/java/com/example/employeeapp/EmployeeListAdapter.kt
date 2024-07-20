@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.employeeapp.database.Database
 import com.google.android.material.snackbar.Snackbar
+
 class EmployeeListAdapter(private val employeeList: ArrayList<Employee>) : RecyclerView.Adapter<EmployeeListAdapter.MyViewHolder>() {
     private lateinit var databaseHolder: Database
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

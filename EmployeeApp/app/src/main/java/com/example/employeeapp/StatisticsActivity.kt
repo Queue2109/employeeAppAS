@@ -1,6 +1,5 @@
 package com.example.employeeapp
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.TextView
@@ -26,6 +25,7 @@ class StatisticsActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_statistics)
+
         databaseHelper = Database(this)
         allEmployees = databaseHelper.getAllEmployees()
         preparePieChart()
@@ -45,7 +45,6 @@ class StatisticsActivity: AppCompatActivity() {
         return String.format(Locale.GERMAN, "%.1f", averageAge)
     }
 
-
     private fun preparePieChart() {
         pieChart = findViewById(R.id.pieChart)
 
@@ -63,6 +62,7 @@ class StatisticsActivity: AppCompatActivity() {
         dataSet.valueTextSize = 16f
         dataSet.valueTextColor = Color.WHITE
         dataSet.valueFormatter = PercentFormatter(pieChart)
+
         val data = PieData(dataSet)
         pieChart.data = data
         pieChart.centerText = "Gender \n Distribution"
@@ -73,7 +73,6 @@ class StatisticsActivity: AppCompatActivity() {
         pieChart.description.isEnabled = false
         pieChart.isDrawHoleEnabled = false
 
-
         val legend = pieChart.legend
         legend.orientation = Legend.LegendOrientation.HORIZONTAL
         legend.isWordWrapEnabled = true
@@ -82,5 +81,4 @@ class StatisticsActivity: AppCompatActivity() {
         legend.textColor = ContextCompat.getColor(this, R.color.text_primary)
         pieChart.invalidate() // refresh
     }
-
 }

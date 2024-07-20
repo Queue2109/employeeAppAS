@@ -1,10 +1,8 @@
 package com.example.employeeapp
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +10,6 @@ import com.example.employeeapp.database.Database
 import com.google.android.material.textfield.TextInputEditText
 
 class EditEmployeeActivity: AppCompatActivity() {
-
 
     private lateinit var firstNameEditText: TextInputEditText
     private lateinit var lastNameEditText: TextInputEditText
@@ -26,6 +23,7 @@ class EditEmployeeActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_employee)
+
         databaseHelper = Database(this)
         firstNameEditText = findViewById(R.id.first_name_input)
         lastNameEditText = findViewById(R.id.last_name_input)
@@ -36,7 +34,7 @@ class EditEmployeeActivity: AppCompatActivity() {
         // Determine if editing or adding new
         employeeId = intent?.getIntExtra("EMPLOYEE_ID", -1)
         if (employeeId != null && employeeId != -1) {
-            // Load employee data for editing
+            // Load existing employee data
             editing = true
             loadEmployeeData(employeeId!!)
             header.setText(R.string.edit_employee)
@@ -56,7 +54,7 @@ class EditEmployeeActivity: AppCompatActivity() {
 
     private fun loadEmployeeData(id: Int) {
         val employee = databaseHelper.getEmployeeById(id)
-        Log.e("Employee", employee.toString())
+
         if(employee != null) {
             firstNameEditText.setText(employee.firstName)
             lastNameEditText.setText(employee.lastName)
@@ -79,22 +77,16 @@ class EditEmployeeActivity: AppCompatActivity() {
             Utils.showAlert("Age restriction", "Employee's age must be between 15 and 64!", this)
             return
         }
-        // Code to either update the existing employee or add a new one
+
         val selectedGenderId = radioGroupGender.checkedRadioButtonId
         val gender = if (selectedGenderId == R.id.radio_button_male) "M" else "F"
         val employeeToSaveOrEdit = Employee(employeeId ?: 0, firstNameEditText.text.toString(), lastNameEditText.text.toString(), ageEditText.text.toString().toInt(), gender)
-        Log.e("EmployeeToSave", employeeToSaveOrEdit.toString())
+
         if (editing) {
-            Log.e("Editing", employeeId.toString())
             databaseHelper.updateEmployee(employeeToSaveOrEdit)
         } else {
             databaseHelper.addEmployee(employeeToSaveOrEdit)
         }
-//        navigate to homepage
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        finish()
     }
-
-
-
 }
