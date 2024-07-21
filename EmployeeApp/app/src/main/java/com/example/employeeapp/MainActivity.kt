@@ -1,10 +1,8 @@
 package com.example.employeeapp
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,6 +21,15 @@ class MainActivity: AppCompatActivity() {
         employeeRecyclerView = findViewById(R.id.employeeRecyclerView)
         databaseHelper = Database(this)
         getUserData()
+
+        // Show welcome message on first launch
+        val prefs: SharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val isFirstLaunch = prefs.getBoolean("isFirstLaunch", true)
+
+        if (isFirstLaunch) {
+            showWelcomeMessage()
+            prefs.edit().putBoolean("isFirstLaunch", false).apply()
+        }
 
         // Go to EditEmployeeActivity when button is clicked
         val addEmployeeButton = findViewById<FloatingActionButton>(R.id.addEmployeeButton)
@@ -47,6 +54,17 @@ class MainActivity: AppCompatActivity() {
         employeeList = databaseHelper.getAllEmployees()
         employeeRecyclerView.layoutManager = LinearLayoutManager(this)
         employeeRecyclerView.adapter = EmployeeListAdapter(employeeList)
+    }
+
+    private fun showWelcomeMessage() {
+        AlertDialog.Builder(this)
+            .setTitle("Welcome to the Employees App!")
+            .setMessage(R.string.welcome_message)
+            .setPositiveButton("Got it!") { dialog, which ->
+                dialog.dismiss()
+            }
+            .create()
+            .show()
     }
 
 }

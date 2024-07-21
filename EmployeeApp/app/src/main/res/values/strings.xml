@@ -15,4 +15,12 @@
     <string name="back">Back</string>
     <string name="cancel">Cancel</string>
     <string name="gender">Gender</string>
+    <string name="welcome_message">
+        \n
+        🌟 Tap the plus icon to add new employees quickly and easily.\n\n
+
+        📊 Press the statistics button to view detailed insights and trends.\n\n
+
+        ✏️ Simply tap to edit or long press to delete any employee entry.
+    </string>
 </resources>

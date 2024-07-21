@@ -1,5 +1,6 @@
 package com.example.employeeapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -87,6 +88,7 @@ class EditEmployeeActivity: AppCompatActivity() {
         } else {
             databaseHelper.addEmployee(employeeToSaveOrEdit)
         }
-        finish()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }
